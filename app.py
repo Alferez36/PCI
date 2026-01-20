@@ -7,18 +7,18 @@ st.set_page_config(page_title="Asistente de Diagnóstico - Modelo A", layout="wi
 
 @st.cache_resource
 def load_assets():
-    model = joblib.load('model_A_diag.joblib')
+    model = joblib.load('model_A_forest.joblib')
     preprocessor = joblib.load('preprocessor_A.joblib')
     return model, preprocessor
 
 model, preprocessor = load_assets()
 
-st.title("🧪 Sistema de Soporte al Diagnóstico de Diabetes")
+st.title("Diagnóstico de Diabetes")
 st.info("Este modelo utiliza biomarcadores clínicos (Glucosa, HbA1c) para confirmar la presencia de diabetes.")
 
 with st.form("clinical_form"):
     # Sección 1: Marcadores Críticos (Los que RandomForest marcó como más importantes)
-    st.subheader("🩸 Biomarcadores de Glucosa")
+    st.subheader("Biomarcadores de Glucosa")
     c1, c2, c3, c4 = st.columns(4)
     with c1:
         hba1c = st.number_input("HbA1c (%)", 4.0, 15.0, 5.4, help="Hemoglobina Glicosilada")
@@ -34,18 +34,18 @@ with st.form("clinical_form"):
     # Sección 2: Otros datos clínicos y demográficos
     col_a, col_b = st.columns(2)
     with col_a:
-        st.subheader("📊 Perfil del Paciente")
+        st.subheader("Perfil del Paciente")
         age = st.number_input("Edad", 1, 120, 45)
         gender = st.selectbox("Género", ["Male", "Female", "Other"])
         bmi = st.number_input("IMC", 10.0, 60.0, 26.5)
         risk_score = st.slider("Diabetes Risk Score previo", 0.0, 1.0, 0.4)
-        ethnicity = st.selectbox("Etnia", ["Caucasian", "African American", "Asian", "Hispanic", "Other"])
-        employment = st.selectbox("Empleo", ["Employed", "Unemployed", "Self-Employed", "Retired"])
+        ethnicity = st.selectbox("Etnia", ["Asian", "Black", "Hispanic", "White", "Other"])
+        employment = st.selectbox("Empleo", ["Employed", "Unemployed", "Student", "Retired"])
         education = st.selectbox("Educación", ['No formal', 'Highschool', 'Graduate', 'Postgraduate'])
         income = st.selectbox("Ingresos", ['Low', 'Lower-Middle', 'Middle', 'Upper-Middle', 'High'])
         
     with col_b:
-        st.subheader("💓 Signos Vitales y Lípidos")
+        st.subheader("Signos Vitales y Lípidos")
         sys_bp = st.number_input("Sistólica", 80, 200, 120)
         dia_bp = st.number_input("Diastólica", 50, 120, 80)
         heart_rate = st.number_input("Frecuencia Cardíaca", 40, 150, 72)
@@ -54,7 +54,7 @@ with st.form("clinical_form"):
         hdl = st.number_input("HDL", 20, 100, 50)
         ldl = st.number_input("LDL", 50, 300, 120)
 
-    st.subheader("📋 Antecedentes y Estilo de Vida")
+    st.subheader("Antecedentes y Estilo de Vida")
     c5, c6, c7, c8 = st.columns(4)
     with c5:
         fam_hist = st.checkbox("Historia Familiar")
@@ -112,4 +112,4 @@ if submit:
             st.success("RESULTADO: NEGATIVO")
             st.write("Los valores se encuentran dentro de los rangos normales para el modelo.")
 
-    st.warning("⚠️ Nota: Esta es una herramienta experimental basada en datos históricos. No sustituye un diagnóstico médico profesional.")
+    st.warning("Nota: Esta herramienta no sustituye un diagnóstico médico profesional.")
