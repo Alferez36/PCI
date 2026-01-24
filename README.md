@@ -5,6 +5,7 @@ Instrucciones para desplegar el proyecto de manera local.
 ## Estructura del proyecto
 Para un correcto funcionamiento de la aplicación, el directorio del proyecto debe mantener la siguiente estructura: 
 
+```bash
 /
 ├── app.py   
 ├── model_A_forest.joblib
@@ -12,13 +13,15 @@ Para un correcto funcionamiento de la aplicación, el directorio del proyecto de
 ├── model_C_forest.joblib
 ├── preprocessor_C.joblib
 └── requirements.txt
+```
 
 Incluye los preprocesadores de ambos modelos, los propios modelos entrenados, el código fuente para la aplicación (app.py) y las dependencias del sistema (requirements.txt). 
 
 ## Requisitos
 - Python 3.9 o superior. 
 - Gestor de paquetes pip.
-- scikit-learn==1.6.1. 
+- scikit-learn==1.6.1.   
+
 El entrenamiento de los modelos se hizo sobre la versión scikit-learn 1.6.1. Se ha declarado para que no haya problemas en el deployment, ya que algunos sistemas utilizan versiones más actualizadas. 
 
 ## Instalación
@@ -52,4 +55,6 @@ La interfaz está organizada en varias pestañas en la que se debe de ingresar l
 ## 3. Obtención del resultado
 Tras haber completado todos los campos haga clic en el botón "EJECUTAR DIAGNÓSTICO". La aplicación le mostrará la métrica de probabilidad (0-100%) de padecer la enfermedad junto a un mensaje visual (Rojo para Positivo, Verde para negativo). 
 
-[!WARNING] Aviso importante: Esta herramienta es un prototipo con fines informativos y no sustituye el juicio de un profesional de la salud. Siempre consulte a un médico.
+[!WARNING] 
+
+Esta herramienta es un prototipo con fines educativos e informativos y no sustituye el juicio del profesional santitario. Si cree que padece síntomas consistentes con diabetes, consulte a un profesional.
