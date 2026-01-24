@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Configuración
 st.set_page_config(page_title="Asistente de Diagnóstico - Modelo A", layout="wide")
 
 @st.cache_resource
@@ -17,7 +16,6 @@ st.title("Diagnóstico de Diabetes")
 st.info("Este modelo utiliza biomarcadores clínicos (Glucosa, HbA1c) para confirmar la presencia de diabetes.")
 
 with st.form("clinical_form"):
-    # Sección 1: Marcadores Críticos (Los que RandomForest marcó como más importantes)
     st.subheader("Biomarcadores de Glucosa")
     c1, c2, c3, c4 = st.columns(4)
     with c1:
@@ -31,7 +29,6 @@ with st.form("clinical_form"):
 
     st.divider()
 
-    # Sección 2: Otros datos clínicos y demográficos
     col_a, col_b = st.columns(2)
     with col_a:
         st.subheader("Perfil del Paciente")
@@ -74,7 +71,6 @@ with st.form("clinical_form"):
     submit = st.form_submit_button("EJECUTAR DIAGNÓSTICO")
 
 if submit:
-    # Construir el diccionario con todas las columnas que espera el preprocesador A
     input_data = pd.DataFrame({
         'age': [age], 'gender': [gender], 'ethnicity': [ethnicity],
         'education_level': [education], 'income_level': [income],
@@ -91,12 +87,11 @@ if submit:
         'cardiovascular_history': [1 if cardio else 0]
     })
 
-    # Procesar y predecir
     input_p = preprocessor.transform(input_data)
     prob = model.predict_proba(input_p)[0][1]
     
-    # Umbral sugerido en tu análisis (0.3)
-    umbral = 0.3
+    #umbral sugerido : 0.3 (a partir de 30%)
+    umbral = 0.6
     
     st.divider()
     col_res1, col_res2 = st.columns(2)
