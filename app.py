@@ -32,7 +32,7 @@ try:
     model, preprocessor = load_assets(picked_model)
 except Exception as e:
     st.error(
-        "Error al cargar los archivos del modeleo. Los archivos .joblib deben estar presentes dentro de la misma carpeta."
+        "Error al cargar los archivos del modelo. Los archivos .joblib deben estar presentes dentro de la misma carpeta."
     )
     st.stop()
 
