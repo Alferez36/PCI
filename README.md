@@ -55,6 +55,5 @@ La interfaz está organizada en varias pestañas en la que se debe de ingresar l
 ## 3. Obtención del resultado
 Tras haber completado todos los campos haga clic en el botón "EJECUTAR DIAGNÓSTICO". La aplicación le mostrará la métrica de probabilidad (0-100%) de padecer la enfermedad junto a un mensaje visual (Rojo para Positivo, Verde para negativo). 
 
-[!WARNING] 
-
-Esta herramienta es un prototipo con fines educativos e informativos y no sustituye el juicio del profesional santitario. Si cree que padece síntomas consistentes con diabetes, consulte a un profesional.
+>[!WARNING] 
+>Esta herramienta es un prototipo con fines educativos e informativos y no sustituye el juicio del profesional santitario. Si cree que padece síntomas consistentes con diabetes, consulte a un profesional.
